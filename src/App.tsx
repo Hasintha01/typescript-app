@@ -9,6 +9,7 @@ import { WeatherService } from './services/weatherService';
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import ForecastCard from './components/ForecastCard';
+import HourlyForecast from './components/HourlyForecast';
 import CurrentLocationButton from './components/CurrentLocationButton';
 import TemperatureToggle from './components/TemperatureToggle';
 import Loading from './components/Loading';
@@ -123,7 +124,12 @@ function App() {
         {weatherData && !isLoading && !error && (
           <>
             <WeatherCard weather={weatherData} tempUnit={tempUnit} />
-            {forecastData && <ForecastCard forecast={forecastData} tempUnit={tempUnit} />}
+            {forecastData && (
+              <>
+                <HourlyForecast forecast={forecastData} tempUnit={tempUnit} />
+                <ForecastCard forecast={forecastData} tempUnit={tempUnit} />
+              </>
+            )}
           </>
         )}
 
