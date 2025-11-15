@@ -9,9 +9,10 @@ import './ForecastCard.css';
 
 interface ForecastCardProps {
   forecast: any;
+  tempUnit?: 'C' | 'F';
 }
 
-const ForecastCard = ({ forecast }: ForecastCardProps) => {
+const ForecastCard = ({ forecast, tempUnit = 'C' }: ForecastCardProps) => {
   // Group forecast by day and get one entry per day (noon time)
   const getDailyForecasts = () => {
     const dailyData: any[] = [];
@@ -66,7 +67,7 @@ const ForecastCard = ({ forecast }: ForecastCardProps) => {
                 className="forecast-icon"
               />
               <div className="forecast-temp">
-                {formatTemperature(day.main.temp)}
+                {formatTemperature(day.main.temp, tempUnit)}
               </div>
               <div className="forecast-desc">
                 {capitalizeWords(day.weather[0].description)}

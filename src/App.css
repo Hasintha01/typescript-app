@@ -13,6 +13,7 @@
 
 /* Header section */
 .app-header {
+  position: relative;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);

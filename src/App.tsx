@@ -10,17 +10,25 @@ import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import ForecastCard from './components/ForecastCard';
 import CurrentLocationButton from './components/CurrentLocationButton';
+import TemperatureToggle from './components/TemperatureToggle';
 import Loading from './components/Loading';
 import ErrorMessage from './components/ErrorMessage';
 import './App.css';
 
 function App() {
+  // Get saved temperature unit from localStorage or default to Celsius
+  const getSavedTempUnit = (): 'C' | 'F' => {
+    const saved = localStorage.getItem('tempUnit');
+    return (saved === 'F' || saved === 'C') ? saved : 'C';
+  };
+
   // State management
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [forecastData, setForecastData] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasLoadedInitial, setHasLoadedInitial] = useState(false);
+  const [tempUnit, setTempUnit] = useState<'C' | 'F'>(getSavedTempUnit());
 
   // Load current location weather on initial load
   useEffect(() => {
@@ -86,11 +94,18 @@ function App() {
     setError(null);
   };
 
+  // Handle temperature unit toggle
+  const handleTempUnitToggle = (unit: 'C' | 'F') => {
+    setTempUnit(unit);
+    localStorage.setItem('tempUnit', unit);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
         <h1>🌤️ Weather Dashboard</h1>
         <p className="app-subtitle">Get real-time weather information for any city</p>
+        <TemperatureToggle unit={tempUnit} onToggle={handleTempUnitToggle} />
       </header>
 
       <main className="app-main">
@@ -107,8 +122,8 @@ function App() {
         
         {weatherData && !isLoading && !error && (
           <>
-            <WeatherCard weather={weatherData} />
-            {forecastData && <ForecastCard forecast={forecastData} />}
+            <WeatherCard weather={weatherData} tempUnit={tempUnit} />
+            {forecastData && <ForecastCard forecast={forecastData} tempUnit={tempUnit} />}
           </>
         )}
 

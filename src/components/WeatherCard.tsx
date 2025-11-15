@@ -16,9 +16,10 @@ import './WeatherCard.css';
 
 interface WeatherCardProps {
   weather: WeatherData;
+  tempUnit?: 'C' | 'F';
 }
 
-const WeatherCard = ({ weather }: WeatherCardProps) => {
+const WeatherCard = ({ weather, tempUnit = 'C' }: WeatherCardProps) => {
   // Get icon URL from weather data
   const iconUrl = WeatherService.getWeatherIconUrl(weather.weather[0].icon);
 
@@ -46,7 +47,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
         />
         <div className="temperature-section">
           <div className="temperature">
-            {formatTemperature(weather.main.temp)}
+            {formatTemperature(weather.main.temp, tempUnit)}
           </div>
           <div className="weather-description">
             {capitalizeWords(weather.weather[0].description)}
@@ -58,7 +59,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
         <div className="detail-item">
           <span className="detail-label">Feels Like</span>
           <span className="detail-value">
-            {formatTemperature(weather.main.feels_like)}
+            {formatTemperature(weather.main.feels_like, tempUnit)}
           </span>
         </div>
         <div className="detail-item">
@@ -90,7 +91,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
         <div className="detail-item">
           <span className="detail-label">Min / Max</span>
           <span className="detail-value">
-            {formatTemperature(weather.main.temp_min)} / {formatTemperature(weather.main.temp_max)}
+            {formatTemperature(weather.main.temp_min, tempUnit)} / {formatTemperature(weather.main.temp_max, tempUnit)}
           </span>
         </div>
       </div>

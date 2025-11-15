@@ -18,8 +18,9 @@ export const celsiusToFahrenheit = (celsius: number): number => {
   return (celsius * 9/5) + 32;
 };
 
-// Format temperature with degree symbol
-export const formatTemperature = (temp: number, unit: 'C' | 'F' = 'C'): string => {
+// Format temperature with degree symbol and unit conversion
+export const formatTemperature = (tempCelsius: number, unit: 'C' | 'F' = 'C'): string => {
+  const temp = unit === 'F' ? celsiusToFahrenheit(tempCelsius) : tempCelsius;
   return `${Math.round(temp)}°${unit}`;
 };
 
