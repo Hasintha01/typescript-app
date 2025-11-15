@@ -1,3 +1,8 @@
+/**
+ * Loading Component
+ * Displays a spinner while fetching weather data
+ */
+
 import './Loading.css';
 
 const Loading = () => {

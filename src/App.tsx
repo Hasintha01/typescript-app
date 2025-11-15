@@ -1,3 +1,8 @@
+/**
+ * Main App Component
+ * Weather Dashboard - Entry point
+ */
+
 import { useState } from 'react';
 import type { WeatherData } from './types/weather';
 import { WeatherService } from './services/weatherService';
@@ -8,10 +13,12 @@ import ErrorMessage from './components/ErrorMessage';
 import './App.css';
 
 function App() {
+  // State management
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Fetch weather data for searched city
   const handleSearch = async (city: string) => {
     setIsLoading(true);
     setError(null);
@@ -27,6 +34,7 @@ function App() {
     }
   };
 
+  // Clear error message
   const handleRetry = () => {
     setError(null);
   };

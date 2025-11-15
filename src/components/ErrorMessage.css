@@ -1,3 +1,9 @@
+/**
+ * ErrorMessage Styles
+ * Error display with icon and retry button
+ */
+
+/* Container */
 .error-container {
   display: flex;
   flex-direction: column;
@@ -9,6 +15,7 @@
   margin: 0 auto;
 }
 
+/* Warning icon */
 .error-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
@@ -26,6 +33,7 @@
   line-height: 1.5;
 }
 
+/* Retry button */
 .retry-button {
   padding: 0.75rem 2rem;
   font-size: 1rem;

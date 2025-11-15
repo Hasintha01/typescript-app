@@ -1,5 +1,9 @@
-// Weather data types based on OpenWeatherMap API response
+/**
+ * Weather Types
+ * Type definitions for OpenWeatherMap API responses
+ */
 
+// Main weather response structure
 export interface WeatherData {
   coord: Coordinates;
   weather: WeatherCondition[];
@@ -16,11 +20,13 @@ export interface WeatherData {
   cod: number;
 }
 
+// Geographic coordinates
 export interface Coordinates {
   lon: number;
   lat: number;
 }
 
+// Weather condition details
 export interface WeatherCondition {
   id: number;
   main: string;
@@ -28,6 +34,7 @@ export interface WeatherCondition {
   icon: string;
 }
 
+// Temperature and atmospheric data
 export interface MainWeatherData {
   temp: number;
   feels_like: number;
@@ -39,16 +46,19 @@ export interface MainWeatherData {
   grnd_level?: number;
 }
 
+// Wind information
 export interface WindData {
   speed: number;
   deg: number;
   gust?: number;
 }
 
+// Cloud coverage
 export interface CloudData {
   all: number;
 }
 
+// System data (country, sunrise, sunset)
 export interface SystemData {
   type?: number;
   id?: number;
@@ -57,6 +67,7 @@ export interface SystemData {
   sunset: number;
 }
 
+// API error response
 export interface WeatherError {
   cod: string | number;
   message: string;

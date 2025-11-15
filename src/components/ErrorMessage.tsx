@@ -1,3 +1,8 @@
+/**
+ * ErrorMessage Component
+ * Displays error messages with optional retry button
+ */
+
 import './ErrorMessage.css';
 
 interface ErrorMessageProps {

@@ -1,3 +1,8 @@
+/**
+ * WeatherCard Component
+ * Displays detailed weather information for a city
+ */
+
 import type { WeatherData } from '../types/weather';
 import { WeatherService } from '../services/weatherService';
 import { 
@@ -14,6 +19,7 @@ interface WeatherCardProps {
 }
 
 const WeatherCard = ({ weather }: WeatherCardProps) => {
+  // Get icon URL from weather data
   const iconUrl = WeatherService.getWeatherIconUrl(weather.weather[0].icon);
 
   return (

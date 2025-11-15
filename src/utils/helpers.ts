@@ -1,8 +1,9 @@
 /**
- * Convert Unix timestamp to readable date/time
- * @param timestamp - Unix timestamp
- * @returns Formatted date string
+ * Helper Utilities
+ * Common functions for formatting and conversions
  */
+
+// Convert Unix timestamp to readable time
 export const formatTimestamp = (timestamp: number): string => {
   const date = new Date(timestamp * 1000);
   return date.toLocaleString('en-US', {
@@ -12,30 +13,17 @@ export const formatTimestamp = (timestamp: number): string => {
   });
 };
 
-/**
- * Convert temperature to Fahrenheit
- * @param celsius - Temperature in Celsius
- * @returns Temperature in Fahrenheit
- */
+// Convert Celsius to Fahrenheit
 export const celsiusToFahrenheit = (celsius: number): number => {
   return (celsius * 9/5) + 32;
 };
 
-/**
- * Format temperature with unit
- * @param temp - Temperature value
- * @param unit - Temperature unit ('C' or 'F')
- * @returns Formatted temperature string
- */
+// Format temperature with degree symbol
 export const formatTemperature = (temp: number, unit: 'C' | 'F' = 'C'): string => {
   return `${Math.round(temp)}°${unit}`;
 };
 
-/**
- * Capitalize first letter of each word
- * @param str - Input string
- * @returns Capitalized string
- */
+// Capitalize first letter of each word
 export const capitalizeWords = (str: string): string => {
   return str
     .split(' ')
@@ -43,20 +31,12 @@ export const capitalizeWords = (str: string): string => {
     .join(' ');
 };
 
-/**
- * Convert wind speed from m/s to km/h
- * @param speedMs - Wind speed in m/s
- * @returns Wind speed in km/h
- */
+// Convert wind speed from m/s to km/h
 export const msToKmh = (speedMs: number): number => {
   return Math.round(speedMs * 3.6);
 };
 
-/**
- * Get wind direction from degrees
- * @param degrees - Wind direction in degrees
- * @returns Wind direction as compass point (N, NE, E, etc.)
- */
+// Get compass direction from degrees
 export const getWindDirection = (degrees: number): string => {
   const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
   const index = Math.round(degrees / 45) % 8;

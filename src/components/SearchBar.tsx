@@ -1,3 +1,8 @@
+/**
+ * SearchBar Component
+ * Input field for searching weather by city name
+ */
+
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import './SearchBar.css';
@@ -8,8 +13,10 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
+  // Track city input
   const [city, setCity] = useState('');
 
+  // Handle form submission
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (city.trim()) {

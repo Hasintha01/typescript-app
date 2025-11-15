@@ -1,3 +1,9 @@
+/**
+ * WeatherCard Styles
+ * Main weather display card with gradient background
+ */
+
+/* Main card container */
 .weather-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 20px;
@@ -8,6 +14,8 @@
   margin: 0 auto;
   animation: fadeIn 0.5s ease-in;
 }
+
+/* Fade in animation */
 
 @keyframes fadeIn {
   from {
@@ -20,6 +28,7 @@
   }
 }
 
+/* Header section */
 .weather-card-header {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -37,6 +46,7 @@
   font-size: 0.95rem;
 }
 
+/* Main weather display section */
 .weather-main {
   display: flex;
   align-items: center;
@@ -68,6 +78,7 @@
   opacity: 0.95;
 }
 
+/* Details grid section */
 .weather-details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -95,6 +106,7 @@
   font-weight: 600;
 }
 
+/* Mobile responsive */
 @media (max-width: 768px) {
   .weather-card {
     padding: 1.5rem;
