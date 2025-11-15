@@ -8,6 +8,16 @@ import type { WeatherData, WeatherError } from '../types/weather';
 // API configuration
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
+const GEO_URL = 'https://api.openweathermap.org/geo/1.0';
+
+// Types for geocoding
+export interface GeoLocation {
+  name: string;
+  country: string;
+  state?: string;
+  lat: number;
+  lon: number;
+}
 
 export class WeatherService {
   // Fetch weather by city name
@@ -124,6 +134,33 @@ export class WeatherService {
         throw error;
       }
       throw new Error('An unexpected error occurred while fetching forecast data');
+    }
+  }
+
+  // Search cities for autocomplete (supports up to 15 results)
+  static async searchCities(query: string, limit: number = 15): Promise<GeoLocation[]> {
+    if (!API_KEY) {
+      throw new Error('API key is not configured');
+    }
+
+    if (!query || query.trim().length < 2) {
+      return [];
+    }
+
+    try {
+      const response = await fetch(
+        `${GEO_URL}/direct?q=${encodeURIComponent(query)}&limit=${limit}&appid=${API_KEY}`
+      );
+
+      if (!response.ok) {
+        return [];
+      }
+
+      const data: GeoLocation[] = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error searching cities:', error);
+      return [];
     }
   }
 }
