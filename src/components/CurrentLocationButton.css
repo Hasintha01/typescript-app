@@ -12,7 +12,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: #007AFF;
-  background: rgba(255, 255, 255, 0.95);
+  background: #FFFFFF;
   border: 1px solid rgba(0, 122, 255, 0.3);
   border-radius: 12px;
   cursor: pointer;
@@ -30,8 +30,9 @@
 }
 
 .location-button:hover:not(:disabled) {
-  background: #ffffff;
+  background: #FFFFFF;
   border-color: #007AFF;
+  color: #0051D5;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 122, 255, 0.2);
 }
@@ -45,6 +46,8 @@
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  color: #A1A1A1;
+  border-color: #E5E5E5;
 }
 
 @media (max-width: 480px) {

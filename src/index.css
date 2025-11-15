@@ -11,13 +11,29 @@
 }
 
 :root {
-  /* Color System */
+  /* Base / Background Colors */
+  --bg-light-gray: #F8F8F8;
+  --bg-soft-white: #FFFFFF;
+  --bg-light-dark-gray: #E5E5E5;
+  
+  /* Primary Accent Color */
   --primary-blue: #007AFF;
-  --primary-blue-dark: #0051D5;
-  --text-primary: #1d1d1f;
-  --text-secondary: #8e8e93;
-  --bg-primary: #f5f7fa;
-  --bg-secondary: #ffffff;
+  --primary-blue-hover: #0051D5;
+  --primary-blue-alt: #0A84FF;
+  
+  /* Secondary Accent Colors */
+  --success-green: #34C759;
+  --warning-orange: #FF9500;
+  --error-red: #FF3B30;
+  
+  /* Text Colors */
+  --text-primary: #1C1C1E;
+  --text-secondary: rgba(60, 60, 67, 0.6);
+  --text-placeholder: #A1A1A1;
+  
+  /* Frosted / Glass Elements */
+  --frosted-white: rgba(255, 255, 255, 0.6);
+  --subtle-shadow: rgba(0, 0, 0, 0.1);
   --border-light: rgba(0, 0, 0, 0.08);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -37,7 +53,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f5f7fa 0%, #e8ecf1 100%);
+  background: var(--bg-light-gray);
   color: var(--text-primary);
 }
 
@@ -66,16 +82,16 @@ button {
   font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--primary-color);
+  background-color: var(--primary-blue);
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-blue-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
 }
 
 button:active {
@@ -83,8 +99,9 @@ button:active {
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+  background-color: var(--text-placeholder);
 }
 
 /* Input Styles */
@@ -92,14 +109,21 @@ input {
   font-family: inherit;
   font-size: 1rem;
   padding: 0.75rem;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
-  transition: border-color 0.3s ease;
+  background: var(--bg-soft-white);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--text-placeholder);
 }
 
 input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
 }
 
 /* Link Styles */

@@ -39,6 +39,7 @@
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.2px;
+  color: #1C1C1E;
 }
 
 .alert-details {
@@ -46,26 +47,27 @@
   padding-left: 2.25rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  opacity: 0.9;
+  opacity: 0.85;
+  color: rgba(60, 60, 67, 0.6);
 }
 
 /* Severity levels */
 .alert-caution {
-  background: rgba(255, 204, 0, 0.1);
+  background: rgba(255, 204, 0, 0.08);
   border-left-color: #FFCC00;
-  color: #996600;
+  color: #1C1C1E;
 }
 
 .alert-warning {
-  background: rgba(255, 149, 0, 0.1);
+  background: rgba(255, 149, 0, 0.08);
   border-left-color: #FF9500;
-  color: #CC7700;
+  color: #1C1C1E;
 }
 
 .alert-severe {
-  background: rgba(255, 59, 48, 0.1);
+  background: rgba(255, 59, 48, 0.08);
   border-left-color: #FF3B30;
-  color: #CC2E26;
+  color: #1C1C1E;
 }
 
 @media (max-width: 768px) {
