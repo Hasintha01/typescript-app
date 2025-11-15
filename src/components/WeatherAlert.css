@@ -1,0 +1,89 @@
+/**
+ * WeatherAlert Styles
+ * Alert banner styling with severity levels
+ */
+
+.weather-alert {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  animation: slideIn 0.3s ease-out;
+  border-left: 4px solid;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.alert-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.alert-message {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.alert-details {
+  margin-top: 0.5rem;
+  padding-left: 2.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Severity levels */
+.alert-caution {
+  background: rgba(255, 204, 0, 0.1);
+  border-left-color: #FFCC00;
+  color: #996600;
+}
+
+.alert-warning {
+  background: rgba(255, 149, 0, 0.1);
+  border-left-color: #FF9500;
+  color: #CC7700;
+}
+
+.alert-severe {
+  background: rgba(255, 59, 48, 0.1);
+  border-left-color: #FF3B30;
+  color: #CC2E26;
+}
+
+@media (max-width: 768px) {
+  .weather-alert {
+    padding: 0.875rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .alert-icon {
+    font-size: 1.25rem;
+  }
+
+  .alert-message {
+    font-size: 0.9375rem;
+  }
+
+  .alert-details {
+    padding-left: 2rem;
+    font-size: 0.8125rem;
+  }
+}

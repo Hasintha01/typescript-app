@@ -10,8 +10,10 @@ import {
   capitalizeWords, 
   formatTimestamp, 
   msToKmh, 
-  getWindDirection 
+  getWindDirection,
+  getWeatherSeverity
 } from '../utils/helpers';
+import WeatherAlert from './WeatherAlert';
 import './WeatherCard.css';
 
 interface WeatherCardProps {
@@ -22,9 +24,33 @@ interface WeatherCardProps {
 const WeatherCard = ({ weather, tempUnit = 'C' }: WeatherCardProps) => {
   // Get icon URL from weather data
   const iconUrl = WeatherService.getWeatherIconUrl(weather.weather[0].icon);
+  
+  // Check for severe weather conditions
+  const severity = getWeatherSeverity(
+    weather.weather[0].id,
+    weather.wind.speed,
+    weather.visibility
+  );
+
+  // Get card class based on severity
+  const getCardClass = () => {
+    let classes = 'weather-card';
+    if (severity.level === 'severe') classes += ' severe-weather';
+    if (severity.level === 'warning') classes += ' warning-weather';
+    return classes;
+  };
 
   return (
-    <div className="weather-card">
+    <div className={getCardClass()}>
+      {/* Show alert if weather is severe */}
+      {severity.level !== 'normal' && (
+        <WeatherAlert 
+          level={severity.level}
+          message={severity.message}
+          details={`Current conditions: ${capitalizeWords(weather.weather[0].description)}`}
+        />
+      )}
+      
       <div className="weather-card-header">
         <h2 className="city-name">
           {weather.name}, {weather.sys.country}

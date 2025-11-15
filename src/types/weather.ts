@@ -103,3 +103,18 @@ export interface CityInfo {
   sunrise: number;
   sunset: number;
 }
+
+// Weather alerts
+export interface WeatherAlert {
+  sender_name: string;
+  event: string;
+  start: number;
+  end: number;
+  description: string;
+  tags: string[];
+}
+
+// Extended weather data with alerts
+export interface WeatherDataWithAlerts extends WeatherData {
+  alerts?: WeatherAlert[];
+}
