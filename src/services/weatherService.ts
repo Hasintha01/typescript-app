@@ -70,4 +70,60 @@ export class WeatherService {
   static getWeatherIconUrl(iconCode: string): string {
     return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   }
+
+  // Get 5-day forecast by city name
+  static async getForecastByCity(city: string): Promise<any> {
+    if (!API_KEY) {
+      throw new Error('API key is not configured. Please add VITE_WEATHER_API_KEY to your .env file');
+    }
+
+    if (!city || city.trim() === '') {
+      throw new Error('City name is required');
+    }
+
+    try {
+      const response = await fetch(
+        `${BASE_URL}/forecast?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to fetch forecast data');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new Error('An unexpected error occurred while fetching forecast data');
+    }
+  }
+
+  // Get 5-day forecast by coordinates
+  static async getForecastByCoordinates(lat: number, lon: number): Promise<any> {
+    if (!API_KEY) {
+      throw new Error('API key is not configured. Please add VITE_WEATHER_API_KEY to your .env file');
+    }
+
+    try {
+      const response = await fetch(
+        `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to fetch forecast data');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new Error('An unexpected error occurred while fetching forecast data');
+    }
+  }
 }

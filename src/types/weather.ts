@@ -72,3 +72,34 @@ export interface WeatherError {
   cod: string | number;
   message: string;
 }
+
+// 5-Day forecast data
+export interface ForecastData {
+  cod: string;
+  message: number;
+  cnt: number;
+  list: ForecastItem[];
+  city: CityInfo;
+}
+
+export interface ForecastItem {
+  dt: number;
+  main: MainWeatherData;
+  weather: WeatherCondition[];
+  clouds: CloudData;
+  wind: WindData;
+  visibility: number;
+  pop: number; // Probability of precipitation
+  dt_txt: string;
+}
+
+export interface CityInfo {
+  id: number;
+  name: string;
+  coord: Coordinates;
+  country: string;
+  population: number;
+  timezone: number;
+  sunrise: number;
+  sunset: number;
+}

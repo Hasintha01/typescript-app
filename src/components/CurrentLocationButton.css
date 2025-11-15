@@ -1,0 +1,55 @@
+/**
+ * CurrentLocationButton Styles
+ * Modern location button styling
+ */
+
+.location-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #007AFF;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 122, 255, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.1);
+  letter-spacing: -0.2px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.location-icon {
+  font-size: 1.25rem;
+  display: inline-block;
+}
+
+.location-button:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: #007AFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 122, 255, 0.2);
+}
+
+.location-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.1);
+}
+
+.location-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .location-button {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+}
