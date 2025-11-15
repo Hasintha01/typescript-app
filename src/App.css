@@ -25,6 +25,12 @@
   font-weight: 700;
 }
 
+.app-subtitle {
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
 /* Main Content Styles */
 .app-main {
   flex: 1;
@@ -48,13 +54,39 @@
   font-size: 0.9rem;
 }
 
+/* Welcome Message */
+.welcome-message {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.welcome-message h2 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.welcome-message p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .app-header h1 {
     font-size: 1.8rem;
   }
 
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
   .app-main {
     padding: 1rem;
+  }
+
+  .welcome-message h2 {
+    font-size: 1.5rem;
   }
 }
