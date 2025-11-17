@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/typescript-app/', // Important for GitHub Pages deployment
+  base: '/typescript-app/', // GitHub Pages repository path
   test: {
     globals: true,
     environment: 'jsdom',
