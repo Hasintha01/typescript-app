@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import type { WeatherData } from './types/weather';
+import type { WeatherData, ForecastData } from './types/weather';
 import { WeatherService } from './services/weatherService';
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
@@ -26,7 +26,7 @@ function App() {
 
   // State management
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [forecastData, setForecastData] = useState<any | null>(null);
+  const [forecastData, setForecastData] = useState<ForecastData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasLoadedInitial, setHasLoadedInitial] = useState(false);
