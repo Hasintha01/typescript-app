@@ -79,21 +79,13 @@ jobs:
           name: build-artifacts
           path: dist/
 
-      # This is a placeholder for your actual deployment
+      # Deploy to staging server
       # Replace with your deployment method (FTP, SSH, Cloud provider, etc.)
       - name: Deploy to Staging Server
         run: |
           echo "🚀 Deploying to staging environment..."
           echo "Build artifacts are in: dist/"
-          echo "This is where you'd deploy to your staging server"
-          # Example deployment commands (uncomment and modify as needed):
-          # - name: Deploy via FTP
-          #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-          #   with:
-          #     server: ${{ secrets.STAGING_FTP_SERVER }}
-          #     username: ${{ secrets.STAGING_FTP_USERNAME }}
-          #     password: ${{ secrets.STAGING_FTP_PASSWORD }}
-          #     local-dir: ./dist/
+          echo "Configure your deployment method here"
 
       - name: Deployment Summary
         run: |
@@ -123,20 +115,12 @@ jobs:
           name: build-artifacts
           path: dist/
 
-      # This is a placeholder for your actual deployment
+      # Deploy to production server
       - name: Deploy to Production Server
         run: |
           echo "🚀 Deploying to PRODUCTION environment..."
           echo "Build artifacts are in: dist/"
-          echo "This is where you'd deploy to your production server"
-          # Example deployment commands (uncomment and modify as needed):
-          # - name: Deploy via FTP
-          #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-          #   with:
-          #     server: ${{ secrets.PROD_FTP_SERVER }}
-          #     username: ${{ secrets.PROD_FTP_USERNAME }}
-          #     password: ${{ secrets.PROD_FTP_PASSWORD }}
-          #     local-dir: ./dist/
+          echo "Configure your deployment method here"
 
       - name: Deployment Summary
         run: |

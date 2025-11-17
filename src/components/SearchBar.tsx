@@ -21,7 +21,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
-  
+
   // Debounce the city input to avoid excessive API calls (300ms delay)
   const debouncedCity = useDebounce(city, 300);
 
@@ -39,7 +39,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
   const handleInputChange = (value: string) => {
     setCity(value);
     setSelectedIndex(-1);
-    
+
     // Clear suggestions if input is too short
     if (value.trim().length < 2) {
       setSuggestions([]);
@@ -68,7 +68,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
 
   // Handle suggestion selection
   const handleSuggestionClick = (suggestion: GeoLocation) => {
-    const cityName = suggestion.state 
+    const cityName = suggestion.state
       ? `${suggestion.name}, ${suggestion.state}, ${suggestion.country}`
       : `${suggestion.name}, ${suggestion.country}`;
     setCity(cityName);
@@ -83,9 +83,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex((prev) => 
-        prev < suggestions.length - 1 ? prev + 1 : prev
-      );
+      setSelectedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
@@ -111,7 +109,7 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
 
   return (
     <div className="search-bar" ref={searchRef}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} role="search" aria-label="Search for weather by city">
         <div className="search-input-wrapper">
           <input
             type="text"
@@ -122,14 +120,27 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
             disabled={isLoading}
             className="search-input"
             autoComplete="off"
+            aria-label="City name"
+            aria-autocomplete="list"
+            aria-controls={showSuggestions ? 'suggestions-list' : undefined}
+            aria-expanded={showSuggestions}
+            aria-activedescendant={selectedIndex >= 0 ? `suggestion-${selectedIndex}` : undefined}
           />
           {showSuggestions && suggestions.length > 0 && (
-            <ul className="suggestions-list">
+            <ul
+              className="suggestions-list"
+              id="suggestions-list"
+              role="listbox"
+              aria-label="City suggestions"
+            >
               {suggestions.map((suggestion, index) => (
                 <li
                   key={`${suggestion.name}-${suggestion.country}-${suggestion.lat}-${suggestion.lon}`}
+                  id={`suggestion-${index}`}
                   className={`suggestion-item ${index === selectedIndex ? 'selected' : ''}`}
                   onClick={() => handleSuggestionClick(suggestion)}
+                  role="option"
+                  aria-selected={index === selectedIndex}
                 >
                   <span className="suggestion-name">{suggestion.name}</span>
                   <span className="suggestion-location">
@@ -141,10 +152,11 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
             </ul>
           )}
         </div>
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           disabled={isLoading || !city.trim()}
           className="search-button"
+          aria-label="Search for weather"
         >
           {isLoading ? 'Searching...' : 'Search'}
         </button>

@@ -12,11 +12,13 @@ interface TemperatureToggleProps {
 
 const TemperatureToggle = ({ unit, onToggle }: TemperatureToggleProps) => {
   return (
-    <div className="temperature-toggle">
+    <div className="temperature-toggle" role="group" aria-label="Temperature unit selector">
       <button
         className={`toggle-button ${unit === 'C' ? 'active' : ''}`}
         onClick={() => onToggle('C')}
         aria-label="Switch to Celsius"
+        aria-pressed={unit === 'C'}
+        type="button"
       >
         °C
       </button>
@@ -24,6 +26,8 @@ const TemperatureToggle = ({ unit, onToggle }: TemperatureToggleProps) => {
         className={`toggle-button ${unit === 'F' ? 'active' : ''}`}
         onClick={() => onToggle('F')}
         aria-label="Switch to Fahrenheit"
+        aria-pressed={unit === 'F'}
+        type="button"
       >
         °F
       </button>
