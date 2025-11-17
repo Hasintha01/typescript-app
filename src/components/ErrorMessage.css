@@ -1,47 +1,51 @@
 /**
  * ErrorMessage Styles
- * Modern error display
+ * iOS-style error display with alert styling
  */
 
-/* Container */
+/* Container with glassmorphism */
 .error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 2rem;
+  padding: var(--space-xxl) var(--space-xl);
   text-align: center;
   max-width: 480px;
   margin: 0 auto;
-  background: #FFFFFF;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-strong));
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  box-shadow: var(--shadow-md);
+  
+  animation: fadeInUp var(--motion-medium) var(--motion-easing);
 }
 
 /* Warning icon */
 .error-icon {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
   filter: grayscale(20%);
+  animation: bounceIn var(--motion-long) var(--motion-easing);
 }
 
 .error-container h3 {
-  color: #1C1C1E;
-  margin: 0 0 0.75rem 0;
-  font-size: 1.375rem;
-  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-sm) 0;
+  font-size: var(--font-heading-lg);
+  font-weight: var(--weight-display);
   letter-spacing: -0.3px;
 }
 
 .error-message {
-  color: rgba(60, 60, 67, 0.6);
-  margin: 0 0 1.75rem 0;
-  line-height: 1.5;
-  font-size: 0.9375rem;
-  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-xl) 0;
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-body-md);
+  font-weight: var(--weight-body);
 }
 
 /* Retry button */

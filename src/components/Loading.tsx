@@ -7,9 +7,10 @@ import './Loading.css';
 
 const Loading = () => {
   return (
-    <div className="loading-container">
-      <div className="loading-spinner"></div>
+    <div className="loading-container" role="status" aria-live="polite" aria-busy="true">
+      <div className="loading-spinner" aria-hidden="true"></div>
       <p>Loading weather data...</p>
+      <span className="sr-only">Loading weather information, please wait...</span>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 /**
  * SearchBar Styles
- * Modern search input with smooth interactions
+ * iOS-style search input with glassmorphism & smooth interactions
  */
 
 /* Container */
@@ -13,7 +13,7 @@
 /* Form layout */
 .search-bar form {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--space-sm);
 }
 
 /* Input wrapper for positioning suggestions */
@@ -22,67 +22,75 @@
   flex: 1;
 }
 
-/* Text input field */
+/* Text input field with glassmorphism */
 .search-input {
   width: 100%;
-  padding: 0.875rem 1.125rem;
-  font-size: 1rem;
-  color: #1C1C1E;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-body-md);
+  font-weight: var(--weight-body);
+  color: var(--text-primary);
+  
+  /* Glassmorphism effect */
+  background: var(--input-bg);
+  backdrop-filter: blur(var(--blur-soft));
+  -webkit-backdrop-filter: blur(var(--blur-soft));
+  
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
   outline: none;
-  transition: all 0.2s ease;
-  font-weight: 400;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  
+  box-shadow: var(--shadow-sm);
+  transition: all var(--motion-short) var(--motion-easing);
 }
 
 .search-input::placeholder {
-  color: #A1A1A1;
+  color: var(--text-muted);
 }
 
+/* Focus state with glow and expand */
 .search-input:focus {
-  background: #FFFFFF;
-  border-color: #007AFF;
-  box-shadow: 0 4px 16px rgba(0, 122, 255, 0.15);
-  transform: translateY(-1px);
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus), var(--shadow-md);
+  transform: translateY(-2px) scale(1.01);
 }
 
 .search-input:disabled {
-  background-color: #E5E5E5;
+  background-color: var(--card-bg);
   cursor: not-allowed;
   opacity: 0.5;
-  color: #A1A1A1;
+  color: var(--text-muted);
 }
 
 /* Search button */
 .search-button {
-  padding: 0.875rem 1.75rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  background: #007AFF;
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-body-md);
+  font-weight: var(--weight-heading);
+  color: var(--text-inverse);
+  background: var(--primary);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
+  transition: all var(--motion-short) var(--motion-easing);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
   letter-spacing: -0.2px;
+  white-space: nowrap;
 }
 
 .search-button:hover:not(:disabled) {
-  background: #0051D5;
+  background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.35);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
 }
 
 .search-button:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
 }
 
 .search-button:disabled {
-  background: #A1A1A1;
+  background: var(--text-muted);
   cursor: not-allowed;
   box-shadow: none;
   opacity: 0.5;
@@ -91,17 +99,17 @@
 /* Mobile responsive */
 @media (max-width: 480px) {
   .search-bar {
-    margin: 0 auto 2rem;
+    margin: 0 auto var(--space-xl);
   }
 
   .search-bar form {
     flex-direction: column;
-    gap: 0.875rem;
+    gap: var(--space-md);
   }
 
   .search-input,
   .search-button {
-    padding: 1rem 1.25rem;
+    padding: var(--space-md) var(--space-lg);
   }
 
   .search-button {
@@ -109,23 +117,49 @@
   }
 }
 
-/* Autocomplete Suggestions */
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .search-input,
+  .search-button,
+  .suggestion-item,
+  .suggestions-list {
+    transition: none;
+    animation: none;
+  }
+  
+  .search-input:focus {
+    transform: none;
+  }
+  
+  .suggestion-item:hover {
+    transform: none;
+  }
+}
+
+/* Autocomplete Suggestions with glassmorphism */
 .suggestions-list {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + var(--space-xs));
   left: 0;
   right: 0;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  /* Glassmorphism */
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-strong));
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+  
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  
   list-style: none;
   margin: 0;
-  padding: 0.5rem;
+  padding: var(--space-xs);
   max-height: 300px;
   overflow-y: auto;
-  z-index: 1000;
-  animation: slideDown 0.2s ease;
+  z-index: var(--z-dropdown);
+  
+  animation: slideDown var(--motion-short) var(--motion-easing);
 }
 
 @keyframes slideDown {
@@ -140,31 +174,32 @@
 }
 
 .suggestion-item {
-  padding: 0.75rem 1rem;
+  padding: var(--space-sm) var(--space-md);
   cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.15s ease;
+  border-radius: var(--radius-sm);
+  transition: all var(--motion-short) var(--motion-easing);
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-xxs);
 }
 
 .suggestion-item:hover,
 .suggestion-item.selected {
-  background: rgba(0, 122, 255, 0.08);
+  background: rgba(var(--primary-rgb), 0.1);
+  transform: translateX(4px);
 }
 
 .suggestion-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1C1C1E;
+  font-size: var(--font-body-md);
+  font-weight: var(--weight-heading);
+  color: var(--text-primary);
   letter-spacing: -0.2px;
 }
 
 .suggestion-location {
-  font-size: 0.875rem;
-  color: rgba(60, 60, 67, 0.6);
-  font-weight: 400;
+  font-size: var(--font-body-sm);
+  color: var(--text-secondary);
+  font-weight: var(--weight-body);
 }
 
 /* Custom scrollbar for suggestions */
@@ -177,10 +212,10 @@
 }
 
 .suggestions-list::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+  background: var(--divider);
+  border-radius: var(--radius-pill);
 }
 
 .suggestions-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--text-muted);
 }
