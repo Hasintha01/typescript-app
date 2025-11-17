@@ -1,103 +1,115 @@
 # Weather Dashboard
 
-A weather dashboard application built with React, TypeScript, and Vite. Search for any city to get real-time weather information using the OpenWeatherMap API.
+A modern, feature-rich weather dashboard built with React, TypeScript, and Vite. Get comprehensive weather information including current conditions, hourly updates, and 5-day forecasts using the OpenWeatherMap API.
 
 ## Features
 
-- Search weather by city name
-- Display current temperature and weather conditions
-- Show detailed weather information (humidity, wind speed, pressure, etc.)
-- Responsive design for mobile and desktop
-- Real-time data from OpenWeatherMap API
+### Core Functionality
+- **City Search**: Search weather data for any city worldwide
+- **Location Detection**: Automatic weather for your current location
+- **Weather Forecasts**: 5-day forecast with detailed daily breakdowns
+- **Hourly Updates**: Hour-by-hour weather predictions
+
+### User Experience
+- **Temperature Toggle**: Switch between Celsius and Fahrenheit
+- **Theme Switcher**: Dark and light mode support
+- **Weather Alerts**: Real-time weather warnings and notifications
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+- **Loading States**: Smooth transitions and feedback
+- **Error Handling**: Clear error messages and recovery options
 
 ## Tech Stack
 
-- React 18
-- TypeScript
-- Vite
-- OpenWeatherMap API
-- CSS3
+- **React 18**: Component-based UI library
+- **TypeScript**: Type-safe development
+- **Vite**: Fast build tool and dev server
+- **OpenWeatherMap API**: Real-time weather data
+- **CSS3**: Modern styling with custom properties and animations
 
 ## Project Structure
 
 ```
 typescript-app/
 ├── src/
-│   ├── components/       # UI components
+│   ├── components/
 │   │   ├── SearchBar.tsx
 │   │   ├── WeatherCard.tsx
+│   │   ├── ForecastCard.tsx
+│   │   ├── HourlyForecast.tsx
+│   │   ├── CurrentLocationButton.tsx
+│   │   ├── TemperatureToggle.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   ├── WeatherAlert.tsx
 │   │   ├── Loading.tsx
 │   │   └── ErrorMessage.tsx
-│   ├── services/         # API integration
+│   ├── services/
 │   │   └── weatherService.ts
-│   ├── types/            # TypeScript definitions
+│   ├── types/
 │   │   └── weather.ts
-│   ├── utils/            # Helper functions
+│   ├── utils/
 │   │   └── helpers.ts
 │   ├── App.tsx
 │   └── main.tsx
 ├── public/
-├── .env.example
 └── package.json
 ```
 
-## Getting Started
+## Setup
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
-- npm or yarn
-- OpenWeatherMap API key
+- Node.js v18 or higher
+- npm or yarn package manager
+- OpenWeatherMap API key (free tier available)
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**:
 ```bash
 git clone https://github.com/Hasintha01/typescript-app.git
 cd typescript-app
 ```
 
-2. Install dependencies:
+2. **Install dependencies**:
 ```bash
 npm install
 ```
 
-3. Create a `.env` file in the root directory:
+3. **Configure environment variables**:
+
+Create a `.env` file in the root directory:
 ```bash
 VITE_WEATHER_API_KEY=your_api_key_here
 ```
 
-4. Get your free API key:
-   - Visit https://openweathermap.org/api
-   - Sign up for a free account
-   - Copy your API key from https://home.openweathermap.org/api_keys
-   - Note: New API keys take 10-15 minutes to activate
+4. **Get your API key**:
+   - Sign up at [OpenWeatherMap](https://openweathermap.org/api)
+   - Navigate to API keys section
+   - Copy your key (activation takes ~10 minutes)
 
-5. Start the development server:
+5. **Start development server**:
 ```bash
 npm run dev
 ```
 
-6. Open http://localhost:5173 in your browser
+6. **Access the application**:
+
+Open your browser and navigate to `http://localhost:5173`
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build optimized production bundle
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint for code quality checks
 
-## API Information
+## Project Highlights
 
-This project uses the OpenWeatherMap API. The free tier includes:
-- 60 calls per minute
-- 1,000,000 calls per month
-- Current weather data
-
-## Development Status
-
-- Phase 1: Project setup - Complete
-- Phase 2: Core functionality and UI components - Complete
+- **Type Safety**: Full TypeScript implementation for reduced runtime errors
+- **Component Architecture**: Modular, reusable components with clear separation of concerns
+- **API Integration**: Centralized service layer for weather data management
+- **Modern Styling**: CSS custom properties for consistent theming
+- **Performance**: Optimized with Vite for fast development and production builds
 
 ## License
 
