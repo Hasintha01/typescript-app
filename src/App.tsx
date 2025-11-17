@@ -12,6 +12,7 @@ import ForecastCard from './components/ForecastCard';
 import HourlyForecast from './components/HourlyForecast';
 import CurrentLocationButton from './components/CurrentLocationButton';
 import TemperatureToggle from './components/TemperatureToggle';
+import ThemeToggle from './components/ThemeToggle';
 import Loading from './components/Loading';
 import ErrorMessage from './components/ErrorMessage';
 import './App.css';
@@ -104,7 +105,10 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🌤️ Weather Dashboard</h1>
+        <div className="app-header-top">
+          <h1>🌤️ Weather Dashboard</h1>
+          <ThemeToggle />
+        </div>
         <p className="app-subtitle">Get real-time weather information for any city</p>
         <TemperatureToggle unit={tempUnit} onToggle={handleTempUnitToggle} />
       </header>

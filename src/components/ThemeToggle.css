@@ -1,0 +1,130 @@
+/**
+ * ThemeToggle Styles
+ * Light/Dark mode switch button
+ */
+
+.theme-toggle {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-soft));
+  -webkit-backdrop-filter: blur(var(--blur-soft));
+  
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  
+  color: var(--text-primary);
+  cursor: pointer;
+  
+  transition: all var(--motion-short) var(--motion-easing);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hover state */
+.theme-toggle:hover {
+  background: var(--card-hover-bg);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Active state */
+.theme-toggle:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Focus state */
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-color: var(--primary);
+}
+
+/* Icon container */
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: transform var(--motion-medium) var(--motion-easing);
+}
+
+/* Icon animation on toggle */
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* SVG styling */
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-primary);
+  transition: color var(--motion-short) var(--motion-easing);
+}
+
+.theme-toggle:hover svg {
+  color: var(--primary);
+}
+
+/* Animation when theme changes */
+@keyframes themeTransition {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+[data-theme="dark"] .theme-toggle svg,
+[data-theme="light"] .theme-toggle svg {
+  animation: themeTransition var(--motion-medium) var(--motion-easing);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-icon,
+  .theme-toggle svg {
+    transition: none;
+    animation: none;
+  }
+  
+  .theme-toggle:hover .theme-toggle-icon {
+    transform: none;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .theme-toggle {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: var(--card-hover-bg);
+  box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.2);
+}

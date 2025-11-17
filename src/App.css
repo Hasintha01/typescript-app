@@ -1,6 +1,6 @@
 /**
  * App Component Styles
- * Clean, minimal design with depth
+ * iOS-style Weather Dashboard
  */
 
 /* Main container */
@@ -8,39 +8,54 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #F8F8F8;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-gradient-start),
+    var(--bg-gradient-end)
+  );
+  transition: background var(--motion-medium) var(--motion-easing);
 }
 
 /* Header section */
 .app-header {
   position: relative;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-strong));
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+  border-bottom: 1px solid var(--divider);
   padding: 1.5rem 2rem;
   text-align: center;
+  transition: background var(--motion-medium) var(--motion-easing);
 }
 
-.app-header h1 {
+.app-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  position: relative;
+}
+
+.app-header-top h1 {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1C1C1E;
+  font-size: var(--font-display-xl);
+  font-weight: var(--weight-display);
+  color: var(--text-primary);
   letter-spacing: -0.5px;
 }
 
 .app-subtitle {
   margin: 0.5rem 0 0 0;
-  color: rgba(60, 60, 67, 0.6);
-  font-size: 0.95rem;
-  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: var(--font-body-sm);
+  font-weight: var(--weight-body);
 }
 
 /* Main content area */
 .app-main {
   flex: 1;
-  padding: 2rem;
+  padding: var(--space-xl);
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
@@ -49,57 +64,80 @@
 /* Welcome section */
 .welcome-message {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: var(--space-xxl) var(--space-xl);
+  animation: fadeInUp var(--motion-medium) var(--motion-easing);
 }
 
 .welcome-message h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem 0;
-  color: #1C1C1E;
+  font-size: var(--font-display-xl);
+  font-weight: var(--weight-display);
+  margin: 0 0 var(--space-md) 0;
+  color: var(--text-primary);
   letter-spacing: -0.5px;
 }
 
 .welcome-message p {
-  font-size: 1rem;
+  font-size: var(--font-body-md);
   margin: 0;
-  color: rgba(60, 60, 67, 0.6);
-  font-weight: 400;
+  color: var(--text-secondary);
+  font-weight: var(--weight-body);
 }
 
 /* Footer section */
 .app-footer {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 1.25rem;
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-strong));
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+  padding: var(--space-lg);
   text-align: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--divider);
+  transition: background var(--motion-medium) var(--motion-easing);
 }
 
 .app-footer p {
   margin: 0;
-  font-size: 0.85rem;
-  color: rgba(60, 60, 67, 0.6);
-  font-weight: 400;
+  font-size: var(--font-body-sm);
+  color: var(--text-secondary);
+  font-weight: var(--weight-body);
+}
+
+.app-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: var(--weight-heading);
+  transition: color var(--motion-short) var(--motion-easing);
+}
+
+.app-footer a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 /* Responsive layout */
 @media (max-width: 768px) {
   .app-header {
-    padding: 1.25rem 1.5rem;
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .app-header-top {
+    flex-direction: column;
+    gap: var(--space-md);
   }
 
-  .app-header h1 {
-    font-size: 1.5rem;
+  .app-header-top h1 {
+    font-size: var(--font-heading-lg);
   }
 
   .app-subtitle {
-    font-size: 0.875rem;
+    font-size: var(--font-caption);
   }
 
   .app-main {
-    padding: 1.5rem 1rem;
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .welcome-message {
+    padding: var(--space-xl) var(--space-md);
   }
 
   .welcome-message {

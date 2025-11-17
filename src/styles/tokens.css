@@ -1,0 +1,253 @@
+/**
+ * Design Tokens
+ * iOS-style Weather Dashboard
+ * 
+ * Contains all design variables for consistent theming
+ * Supports both light and dark modes
+ */
+
+:root {
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+  
+  /* Font Family */
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  /* Font Sizes (rem where 1rem = 16px) */
+  --font-display-xxl: 3.125rem;  /* 50px */
+  --font-display-xl: 2.25rem;    /* 36px */
+  --font-heading-lg: 1.5rem;     /* 24px */
+  --font-heading-md: 1.125rem;   /* 18px */
+  --font-body-md: 1rem;          /* 16px */
+  --font-body-sm: 0.875rem;      /* 14px */
+  --font-caption: 0.75rem;       /* 12px */
+  
+  /* Font Weights */
+  --weight-display: 700;
+  --weight-heading: 600;
+  --weight-body: 400;
+  --weight-caption: 400;
+  
+  /* Line Heights */
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* ========================================
+     SPACING SCALE (8pt grid)
+     ======================================== */
+  
+  --space-xxs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-xxl: 3rem;     /* 48px */
+
+  /* ========================================
+     RADII
+     ======================================== */
+  
+  --radius-sm: 0.5rem;    /* 8px */
+  --radius-md: 0.875rem;  /* 14px */
+  --radius-lg: 1.25rem;   /* 20px */
+  --radius-pill: 999px;
+
+  /* ========================================
+     BLUR (Glassmorphism)
+     ======================================== */
+  
+  --blur-strong: 20px;
+  --blur-soft: 8px;
+
+  /* ========================================
+     MOTION
+     ======================================== */
+  
+  --motion-short: 160ms;
+  --motion-medium: 320ms;
+  --motion-long: 520ms;
+  --motion-easing: cubic-bezier(0.22, 0.9, 0.35, 1);
+
+  /* ========================================
+     Z-INDEX SCALE
+     ======================================== */
+  
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-tooltip: 500;
+
+  /* ========================================
+     LIGHT THEME COLORS (DEFAULT)
+     ======================================== */
+  
+  /* Background */
+  --bg-100: #F6F9FF;
+  --bg-gradient-start: #F6F9FF;
+  --bg-gradient-end: #E8F0FE;
+  
+  /* Glass Panel */
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(11, 18, 32, 0.08);
+  
+  /* Primary Colors */
+  --primary: #007AFF;
+  --primary-hover: #0051D5;
+  --primary-rgb: 0, 122, 255;
+  
+  /* Accent */
+  --accent: #7C5CFF;
+  --accent-hover: #5E3FD6;
+  
+  /* Text */
+  --text-primary: #0B1220;
+  --text-secondary: #55606A;
+  --text-muted: #8E8E93;
+  --text-inverse: #FFFFFF;
+  
+  /* Semantic Colors */
+  --success: #34C759;
+  --warning: #FF9500;
+  --danger: #FF3B30;
+  --info: #007AFF;
+  
+  /* UI Elements */
+  --divider: rgba(11, 18, 32, 0.06);
+  --overlay: rgba(0, 0, 0, 0.4);
+  
+  /* Shadows (Light) */
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --shadow-focus: 0 0 0 4px rgba(0, 122, 255, 0.16);
+  
+  /* Card Backgrounds */
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-hover-bg: rgba(255, 255, 255, 0.8);
+  
+  /* Input */
+  --input-bg: rgba(255, 255, 255, 0.7);
+  --input-border: rgba(0, 0, 0, 0.1);
+  --input-focus-border: var(--primary);
+}
+
+/* ========================================
+   DARK THEME
+   ======================================== */
+
+[data-theme="dark"] {
+  /* Background */
+  --bg-100: #0A0B0F;
+  --bg-gradient-start: #061021;
+  --bg-gradient-end: #071026;
+  
+  /* Glass Panel */
+  --glass: rgba(20, 23, 28, 0.46);
+  --glass-border: rgba(255, 255, 255, 0.04);
+  
+  /* Primary Colors */
+  --primary: #0A84FF;
+  --primary-hover: #409CFF;
+  --primary-rgb: 10, 132, 255;
+  
+  /* Accent */
+  --accent: #8E7BFF;
+  --accent-hover: #A899FF;
+  
+  /* Text */
+  --text-primary: #E6EEF8;
+  --text-secondary: #B7C3D5;
+  --text-muted: #8E8E93;
+  --text-inverse: #0B1220;
+  
+  /* Semantic Colors (slightly adjusted for dark) */
+  --success: #30D158;
+  --warning: #FF9F0A;
+  --danger: #FF453A;
+  --info: #0A84FF;
+  
+  /* UI Elements */
+  --divider: rgba(255, 255, 255, 0.06);
+  --overlay: rgba(0, 0, 0, 0.6);
+  
+  /* Shadows (Dark - softer glows) */
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
+  --shadow-focus: 0 0 0 4px rgba(10, 132, 255, 0.24);
+  
+  /* Card Backgrounds */
+  --card-bg: rgba(20, 24, 30, 0.52);
+  --card-border: rgba(255, 255, 255, 0.04);
+  --card-hover-bg: rgba(30, 34, 40, 0.62);
+  
+  /* Input */
+  --input-bg: rgba(30, 34, 40, 0.5);
+  --input-border: rgba(255, 255, 255, 0.08);
+  --input-focus-border: var(--primary);
+}
+
+/* ========================================
+   PREFERS COLOR SCHEME SUPPORT
+   (Only applies if data-theme is not set)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Background */
+    --bg-100: #0A0B0F;
+    --bg-gradient-start: #061021;
+    --bg-gradient-end: #071026;
+    
+    /* Glass Panel */
+    --glass: rgba(20, 23, 28, 0.46);
+    --glass-border: rgba(255, 255, 255, 0.04);
+    
+    /* Primary Colors */
+    --primary: #0A84FF;
+    --primary-hover: #409CFF;
+    --primary-rgb: 10, 132, 255;
+    
+    /* Accent */
+    --accent: #8E7BFF;
+    --accent-hover: #A899FF;
+    
+    /* Text */
+    --text-primary: #E6EEF8;
+    --text-secondary: #B7C3D5;
+    --text-muted: #8E8E93;
+    --text-inverse: #0B1220;
+    
+    /* Semantic Colors */
+    --success: #30D158;
+    --warning: #FF9F0A;
+    --danger: #FF453A;
+    --info: #0A84FF;
+    
+    /* UI Elements */
+    --divider: rgba(255, 255, 255, 0.06);
+    --overlay: rgba(0, 0, 0, 0.6);
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
+    --shadow-focus: 0 0 0 4px rgba(10, 132, 255, 0.24);
+    
+    /* Card Backgrounds */
+    --card-bg: rgba(20, 24, 30, 0.52);
+    --card-border: rgba(255, 255, 255, 0.04);
+    --card-hover-bg: rgba(30, 34, 40, 0.62);
+    
+    /* Input */
+    --input-bg: rgba(30, 34, 40, 0.5);
+    --input-border: rgba(255, 255, 255, 0.08);
+    --input-focus-border: var(--primary);
+  }
+}
