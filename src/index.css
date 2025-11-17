@@ -24,6 +24,19 @@
   box-sizing: border-box;
 }
 
+/* Prevent horizontal overflow on all elements */
+* {
+  max-width: 100%;
+}
+
+/* Allow specific elements to exceed viewport */
+html,
+body,
+#root,
+.app {
+  max-width: none;
+}
+
 /* ========================================
    ROOT & HTML
    ======================================== */
@@ -138,6 +151,9 @@ body::after {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ========================================

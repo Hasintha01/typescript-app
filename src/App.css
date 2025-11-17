@@ -14,6 +14,8 @@
     var(--bg-gradient-end)
   );
   transition: background var(--motion-medium) var(--motion-easing);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Header section */
