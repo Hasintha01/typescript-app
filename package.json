@@ -10,7 +10,17 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "docker:build": "docker build -t weather-dashboard:latest .",
+    "docker:build:dev": "docker build -f Dockerfile.dev -t weather-dashboard:dev .",
+    "docker:run": "docker run -d -p 8080:80 --name weather-dashboard weather-dashboard:latest",
+    "docker:run:dev": "docker run -d -p 5173:5173 -v ${PWD}:/app -v /app/node_modules --name weather-dashboard-dev weather-dashboard:dev",
+    "docker:stop": "docker stop weather-dashboard weather-dashboard-dev",
+    "docker:clean": "docker rm weather-dashboard weather-dashboard-dev && docker rmi weather-dashboard:latest weather-dashboard:dev",
+    "docker:up": "docker-compose up -d",
+    "docker:up:dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:down": "docker-compose down && docker-compose -f docker-compose.dev.yml down",
+    "docker:logs": "docker logs -f weather-dashboard"
   },
   "dependencies": {
     "react": "^19.2.0",

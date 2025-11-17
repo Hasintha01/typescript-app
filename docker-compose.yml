@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  weather-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_WEATHER_API_KEY=${VITE_WEATHER_API_KEY}
+        - VITE_BASE_PATH=/
+    image: weather-dashboard:latest
+    container_name: weather-dashboard
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - weather-network
+
+networks:
+  weather-network:
+    driver: bridge
