@@ -15,6 +15,7 @@
   box-shadow: var(--shadow-md);
   
   width: 100%;
+  max-width: 100%;
   
   animation: fadeInUp var(--motion-medium) var(--motion-easing);
   transition: all var(--motion-medium) var(--motion-easing);
@@ -31,9 +32,17 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .weather-card {
-    padding: var(--space-lg);
+    padding: var(--space-md);
     margin: 0;
     max-width: 100%;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .weather-card {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
   }
 }
 
@@ -77,13 +86,15 @@
   justify-content: space-between;
   gap: var(--space-xl);
   padding: var(--space-lg) 0;
+  flex-wrap: wrap;
 }
 
 /* Mobile: stack vertically */
 @media (max-width: 768px) {
   .weather-main {
     flex-direction: column;
-    margin-bottom: var(--space-xl);
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
   }
 }
 
@@ -102,6 +113,15 @@
   animation: floatSubtle 4s ease-in-out infinite;
   transition: transform var(--motion-short) var(--motion-easing);
   position: relative;
+}
+
+/* Mobile: smaller icon */
+@media (max-width: 480px) {
+  .weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--space-sm);
+  }
 }
 
 /* Add darker shadow in light mode for better contrast */
@@ -155,18 +175,24 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--divider);
   align-content: start;
+  width: 100%;
 }
 
 /* Mobile: full width grid below */
 @media (max-width: 768px) {
   .weather-details {
-    margin-top: var(--space-xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--divider);
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    background: transparent;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+  }
+}
+
+/* Extra small mobile: single column */
+@media (max-width: 480px) {
+  .weather-details {
+    grid-template-columns: 1fr;
+    padding: var(--space-sm);
   }
 }
 

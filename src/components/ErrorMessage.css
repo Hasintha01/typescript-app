@@ -12,7 +12,9 @@
   padding: var(--space-xxl) var(--space-xl);
   text-align: center;
   max-width: 480px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
   
   background: var(--glass);
   backdrop-filter: blur(var(--blur-strong));
@@ -22,6 +24,21 @@
   box-shadow: var(--shadow-md);
   
   animation: fadeInUp var(--motion-medium) var(--motion-easing);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .error-container {
+    padding: var(--space-xl) var(--space-lg);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-container {
+    padding: var(--space-lg) var(--space-md);
+    border-radius: var(--radius-md);
+  }
 }
 
 /* Warning icon */

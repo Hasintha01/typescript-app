@@ -14,6 +14,8 @@
   backdrop-filter: blur(var(--blur-soft));
   -webkit-backdrop-filter: blur(var(--blur-soft));
   box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes slideInDown {
@@ -73,20 +75,30 @@
 
 @media (max-width: 768px) {
   .weather-alert {
-    padding: 0.875rem 1rem;
-    margin-bottom: 1.25rem;
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
   }
 
   .alert-icon {
-    font-size: 1.25rem;
+    font-size: var(--font-heading-md);
   }
 
   .alert-message {
-    font-size: 0.9375rem;
+    font-size: var(--font-body-sm);
   }
 
   .alert-details {
-    padding-left: 2rem;
-    font-size: 0.8125rem;
+    padding-left: var(--space-lg);
+    font-size: var(--font-caption);
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-alert {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .alert-details {
+    padding-left: var(--space-md);
   }
 }

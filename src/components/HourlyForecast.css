@@ -12,6 +12,7 @@
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
   width: 100%;
+  max-width: 100%;
   animation: fadeInUp var(--motion-medium) var(--motion-easing);
 }
 
@@ -26,9 +27,17 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .hourly-forecast {
-    padding: var(--space-lg);
-    margin: 0;
+    padding: var(--space-md);
+    margin: var(--space-md) 0 0 0;
     max-width: 100%;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .hourly-forecast {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
   }
 }
 
@@ -123,6 +132,15 @@
   animation: scaleIn var(--motion-medium) var(--motion-easing) backwards;
   opacity: 0;
   animation-fill-mode: forwards;
+}
+
+/* Mobile: smaller items */
+@media (max-width: 480px) {
+  .hourly-item {
+    min-width: 80px;
+    width: 80px;
+    padding: var(--space-sm) var(--space-xs);
+  }
 }
 
 .hourly-item:hover {

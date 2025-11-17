@@ -14,6 +14,19 @@
 .search-bar form {
   display: flex;
   gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 480px) {
+  .search-bar {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .search-bar form {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
 }
 
 /* Input wrapper for positioning suggestions */
@@ -76,6 +89,15 @@
   box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
   letter-spacing: -0.2px;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Mobile: full width button */
+@media (max-width: 480px) {
+  .search-button {
+    width: 100%;
+    padding: var(--space-md);
+  }
 }
 
 .search-button:hover:not(:disabled) {

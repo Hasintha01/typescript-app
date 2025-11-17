@@ -75,12 +75,14 @@
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Weather content grid layout */
 .weather-content {
   display: grid;
   gap: var(--space-xl);
+  width: 100%;
 }
 
 /* Desktop layout - wider main card on left, forecast on right, hourly below */
@@ -207,7 +209,20 @@
   text-decoration: underline;
 }
 
-/* Responsive layout */
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .app-main {
+    padding: var(--space-lg);
+  }
+  
+  .weather-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+}
+
+/* Mobile responsive layout */
 @media (max-width: 768px) {
   .app-header {
     padding: var(--space-lg) var(--space-md);
@@ -243,10 +258,6 @@
     padding: var(--space-xl) var(--space-md);
   }
 
-  .welcome-message {
-    padding: 3rem 1.5rem;
-  }
-
   .welcome-message h2 {
     font-size: 1.5rem;
   }
@@ -266,5 +277,48 @@
   .footer-updated,
   .footer-date {
     font-size: 0.8rem;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .app-header {
+    padding: var(--space-md);
+  }
+  
+  .app-header-top h1 {
+    font-size: var(--font-heading-md);
+  }
+
+  .app-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .app-main {
+    padding: var(--space-sm);
+  }
+  
+  .weather-content {
+    gap: var(--space-sm);
+  }
+  
+  .welcome-message {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .welcome-message h2 {
+    font-size: 1.25rem;
+  }
+
+  .welcome-message p {
+    font-size: 0.875rem;
+  }
+
+  .app-footer {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .footer-info {
+    padding: var(--space-sm);
   }
 }
