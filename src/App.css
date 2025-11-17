@@ -56,9 +56,41 @@
 .app-main {
   flex: 1;
   padding: var(--space-xl);
-  max-width: 900px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
+}
+
+/* Weather content grid layout */
+.weather-content {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* Desktop layout - wider main card on left, forecast on right, hourly below */
+@media (min-width: 1025px) {
+  .weather-content {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: stretch; /* Make both cards same height */
+  }
+  
+  /* WeatherCard - top left, wider */
+  .weather-content > :first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  /* ForecastCard - top right */
+  .weather-content > :nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  /* HourlyForecast - bottom spanning both columns */
+  .weather-content > :nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 
 /* Welcome section */

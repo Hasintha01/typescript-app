@@ -126,15 +126,15 @@ function App() {
         {error && <ErrorMessage message={error} onRetry={handleRetry} />}
         
         {weatherData && !isLoading && !error && (
-          <>
+          <div className="weather-content">
             <WeatherCard weather={weatherData} tempUnit={tempUnit} />
             {forecastData && (
               <>
-                <HourlyForecast forecast={forecastData} tempUnit={tempUnit} />
                 <ForecastCard forecast={forecastData} tempUnit={tempUnit} />
+                <HourlyForecast forecast={forecastData} tempUnit={tempUnit} />
               </>
             )}
-          </>
+          </div>
         )}
 
         {!weatherData && !isLoading && !error && (

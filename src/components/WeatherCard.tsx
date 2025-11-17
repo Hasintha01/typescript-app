@@ -66,22 +66,23 @@ const WeatherCard = ({ weather, tempUnit = 'C' }: WeatherCardProps) => {
       </div>
 
       <div className="weather-main">
-        <img 
-          src={iconUrl} 
-          alt={weather.weather[0].description}
-          className="weather-icon"
-        />
-        <div className="temperature-section">
-          <div className="temperature">
-            {formatTemperature(weather.main.temp, tempUnit)}
-          </div>
-          <div className="weather-description">
-            {capitalizeWords(weather.weather[0].description)}
+        <div className="weather-main-left">
+          <img 
+            src={iconUrl} 
+            alt={weather.weather[0].description}
+            className="weather-icon"
+          />
+          <div className="temperature-section">
+            <div className="temperature">
+              {formatTemperature(weather.main.temp, tempUnit)}
+            </div>
+            <div className="weather-description">
+              {capitalizeWords(weather.weather[0].description)}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="weather-details">
+        <div className="weather-details">
         <div className="detail-item">
           <span className="detail-label">Feels Like</span>
           <span className="detail-value">
@@ -119,6 +120,7 @@ const WeatherCard = ({ weather, tempUnit = 'C' }: WeatherCardProps) => {
           <span className="detail-value">
             {formatTemperature(weather.main.temp_min, tempUnit)} / {formatTemperature(weather.main.temp_max, tempUnit)}
           </span>
+        </div>
         </div>
       </div>
     </div>

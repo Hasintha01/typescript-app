@@ -11,9 +11,16 @@
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
-  max-width: 900px;
-  margin: var(--space-lg) auto 0;
+  width: 100%;
   animation: fadeInUp var(--motion-medium) var(--motion-easing);
+}
+
+/* Center on mobile/tablet */
+@media (max-width: 1024px) {
+  .hourly-forecast {
+    max-width: 900px;
+    margin: var(--space-lg) auto 0;
+  }
 }
 
 .hourly-title {
@@ -34,26 +41,24 @@
   
   /* Scroll snap for smooth scrolling */
   scroll-snap-type: x mandatory;
-  scroll-padding: var(--space-md);
+  scroll-padding: 0;
   
   /* Custom scrollbar */
   scrollbar-width: thin;
   scrollbar-color: rgba(var(--primary-rgb), 0.3) transparent;
   
-  /* Fade effect on edges */
+  /* Fade effect on edges - adjusted to prevent right space */
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 5%,
-    black 95%,
-    transparent 100%
+    black 3%,
+    black 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 5%,
-    black 95%,
-    transparent 100%
+    black 3%,
+    black 100%
   );
 }
 
@@ -76,10 +81,10 @@
 }
 
 .hourly-list {
-  display: flex;
+  display: inline-flex;
   gap: var(--space-md);
-  padding: var(--space-xs) 0 var(--space-md);
-  min-width: min-content;
+  padding: var(--space-xs) 0 var(--space-md) 0;
+  min-width: 100%;
 }
 
 .hourly-item {
@@ -87,6 +92,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 100px;
+  width: 100px;
   padding: var(--space-md) var(--space-sm);
   background: rgba(var(--primary-rgb), 0.04);
   border-radius: var(--radius-md);
@@ -123,6 +129,13 @@
   width: 48px;
   height: 48px;
   margin: 0.25rem 0;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Add darker shadow in light mode for better contrast */
+:root:not([data-theme="dark"]) .hourly-icon {
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25)) 
+          drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
 }
 
 .hourly-temp {

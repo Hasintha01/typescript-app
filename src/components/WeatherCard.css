@@ -14,11 +14,18 @@
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
   
-  max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
   
   animation: fadeInUp var(--motion-medium) var(--motion-easing);
   transition: all var(--motion-medium) var(--motion-easing);
+}
+
+/* Center on mobile/tablet */
+@media (max-width: 1024px) {
+  .weather-card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 .weather-card.severe-weather {
@@ -57,19 +64,41 @@
 
 .weather-main {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .weather-main {
+    flex-direction: column;
+    margin-bottom: var(--space-xl);
+  }
+}
+
+.weather-main-left {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: var(--space-xl);
-  padding: var(--space-lg) 0;
+  flex: 0 0 auto;
 }
 
 .weather-icon {
   width: 120px;
   height: 120px;
   margin-bottom: var(--space-md);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
   animation: floatSubtle 4s ease-in-out infinite;
   transition: transform var(--motion-short) var(--motion-easing);
+  position: relative;
+}
+
+/* Add darker shadow in light mode for better contrast */
+:root:not([data-theme="dark"]) .weather-icon {
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.25)) 
+          drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
 }
 
 .weather-icon:hover {
@@ -109,20 +138,37 @@
 
 .weather-details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
-  margin-top: var(--space-xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--divider);
+  flex: 1;
+  padding: var(--space-lg);
+  background: rgba(var(--primary-rgb), 0.02);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--divider);
+  align-content: start;
+}
+
+/* Mobile: full width grid below */
+@media (max-width: 768px) {
+  .weather-details {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--divider);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    background: transparent;
+  }
 }
 
 .detail-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-md);
-  background: rgba(var(--primary-rgb), 0.04);
-  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-light));
+  border-radius: var(--radius-sm);
   border: 1px solid var(--divider);
   transition: all var(--motion-short) var(--motion-easing);
 }

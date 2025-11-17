@@ -69,8 +69,64 @@ body {
   background-attachment: fixed;
   color: var(--text-primary);
   overflow-x: hidden;
+  position: relative;
   transition: background var(--motion-medium) var(--motion-easing),
               color var(--motion-medium) var(--motion-easing);
+}
+
+/* Cloud decorations - visible in both light and dark mode */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--motion-medium) var(--motion-easing);
+}
+
+body::before {
+  width: 600px;
+  height: 200px;
+  top: 10%;
+  right: -100px;
+  background: radial-gradient(ellipse at center, var(--text-primary), transparent 70%);
+  animation: cloudFloat1 30s ease-in-out infinite;
+}
+
+body::after {
+  width: 500px;
+  height: 180px;
+  bottom: 20%;
+  left: -80px;
+  background: radial-gradient(ellipse at center, var(--text-primary), transparent 70%);
+  animation: cloudFloat2 25s ease-in-out infinite;
+}
+
+/* Light mode - increase opacity for better visibility */
+:root:not([data-theme="dark"]) body::before,
+:root:not([data-theme="dark"]) body::after {
+  opacity: 0.12;
+}
+
+/* Cloud floating animations */
+@keyframes cloudFloat1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-30px, 20px);
+  }
+}
+
+@keyframes cloudFloat2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(40px, -15px);
+  }
 }
 
 /* ========================================
