@@ -47,6 +47,8 @@ jobs:
       # Build the application
       - name: Build application
         run: npm run build
+        env:
+          VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
 
       # Upload build artifacts for later deployment
       - name: Upload build artifacts
