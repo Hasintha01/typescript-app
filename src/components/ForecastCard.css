@@ -116,8 +116,20 @@
 
 .forecast-detail {
   font-size: 0.75rem;
-  color: rgba(60, 60, 67, 0.6);
+  color: var(--text-secondary);
   text-align: center;
+  font-weight: var(--weight-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.forecast-detail .detail-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.8;
 }
 
 @keyframes fadeIn {

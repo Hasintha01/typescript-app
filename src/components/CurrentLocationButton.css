@@ -29,8 +29,9 @@
 }
 
 .location-icon {
-  font-size: 1.25rem;
-  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .location-button:hover:not(:disabled) {
