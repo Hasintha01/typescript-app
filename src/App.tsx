@@ -106,7 +106,10 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="app-header-top">
-          <h1>🌤️ Weather Dashboard</h1>
+          <div className="app-title">
+            <img src="/weather_app_logo.png" alt="Weather App Logo" className="app-logo" />
+            <h1>Weather Dashboard</h1>
+          </div>
           <ThemeToggle />
         </div>
         <p className="app-subtitle">Get real-time weather information for any city</p>

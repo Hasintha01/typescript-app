@@ -45,6 +45,20 @@
   letter-spacing: -0.5px;
 }
 
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.app-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  animation: fadeInScale var(--motion-medium) var(--motion-easing);
+}
+
 .app-subtitle {
   margin: 0.5rem 0 0 0;
   color: var(--text-secondary);
@@ -158,6 +172,11 @@
 
   .app-header-top h1 {
     font-size: var(--font-heading-lg);
+  }
+
+  .app-logo {
+    width: 36px;
+    height: 36px;
   }
 
   .app-subtitle {
