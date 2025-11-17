@@ -6,6 +6,7 @@
 import { useState, useEffect, useRef } from 'react';
 import type { FormEvent } from 'react';
 import { WeatherService, type GeoLocation } from '../services/weatherService';
+import { useDebounce } from '../utils/useDebounce';
 import './SearchBar.css';
 
 interface SearchBarProps {
@@ -20,6 +21,9 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
+  
+  // Debounce the city input to avoid excessive API calls (300ms delay)
+  const debouncedCity = useDebounce(city, 300);
 
   // Handle form submission
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -31,20 +35,36 @@ const SearchBar = ({ onSearch, isLoading }: SearchBarProps) => {
     }
   };
 
-  // Handle input change and fetch suggestions
-  const handleInputChange = async (value: string) => {
+  // Handle input change
+  const handleInputChange = (value: string) => {
     setCity(value);
     setSelectedIndex(-1);
-
-    if (value.trim().length >= 2) {
-      const results = await WeatherService.searchCities(value.trim());
-      setSuggestions(results);
-      setShowSuggestions(results.length > 0);
-    } else {
+    
+    // Clear suggestions if input is too short
+    if (value.trim().length < 2) {
       setSuggestions([]);
       setShowSuggestions(false);
     }
   };
+
+  // Fetch suggestions when debounced city changes
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      if (debouncedCity.trim().length >= 2) {
+        try {
+          const results = await WeatherService.searchCities(debouncedCity.trim());
+          setSuggestions(results || []);
+          setShowSuggestions((results || []).length > 0);
+        } catch (error) {
+          console.error('Error fetching city suggestions:', error);
+          setSuggestions([]);
+          setShowSuggestions(false);
+        }
+      }
+    };
+
+    fetchSuggestions();
+  }, [debouncedCity]);
 
   // Handle suggestion selection
   const handleSuggestionClick = (suggestion: GeoLocation) => {

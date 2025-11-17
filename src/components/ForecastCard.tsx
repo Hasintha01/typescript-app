@@ -5,20 +5,21 @@
 
 import { WeatherService } from '../services/weatherService';
 import { formatTemperature, capitalizeWords } from '../utils/helpers';
+import type { ForecastData, ForecastItem } from '../types/weather';
 import './ForecastCard.css';
 
 interface ForecastCardProps {
-  forecast: any;
+  forecast: ForecastData;
   tempUnit?: 'C' | 'F';
 }
 
 const ForecastCard = ({ forecast, tempUnit = 'C' }: ForecastCardProps) => {
   // Group forecast by day and get one entry per day (noon time)
-  const getDailyForecasts = () => {
-    const dailyData: any[] = [];
-    const processedDates = new Set();
+  const getDailyForecasts = (): ForecastItem[] => {
+    const dailyData: ForecastItem[] = [];
+    const processedDates = new Set<string>();
 
-    forecast.list.forEach((item: any) => {
+    forecast.list.forEach((item: ForecastItem) => {
       const date = new Date(item.dt * 1000);
       const dateString = date.toLocaleDateString();
       

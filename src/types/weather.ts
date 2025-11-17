@@ -73,6 +73,37 @@ export interface WeatherError {
   message: string;
 }
 
+// Custom error types for better error handling
+export const WeatherErrorType = {
+  API_KEY_MISSING: 'API_KEY_MISSING',
+  CITY_NOT_FOUND: 'CITY_NOT_FOUND',
+  NETWORK_ERROR: 'NETWORK_ERROR',
+  RATE_LIMIT: 'RATE_LIMIT',
+  INVALID_INPUT: 'INVALID_INPUT',
+  UNKNOWN: 'UNKNOWN',
+} as const;
+
+export type WeatherErrorTypeValue = typeof WeatherErrorType[keyof typeof WeatherErrorType];
+
+export class WeatherServiceError extends Error {
+  type: WeatherErrorTypeValue;
+  retryable: boolean;
+  statusCode?: number;
+
+  constructor(
+    message: string,
+    type: WeatherErrorTypeValue,
+    retryable: boolean = false,
+    statusCode?: number
+  ) {
+    super(message);
+    this.name = 'WeatherServiceError';
+    this.type = type;
+    this.retryable = retryable;
+    this.statusCode = statusCode;
+  }
+}
+
 // 5-Day forecast data
 export interface ForecastData {
   cod: string;

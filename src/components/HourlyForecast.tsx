@@ -5,20 +5,21 @@
 
 import { WeatherService } from '../services/weatherService';
 import { formatTemperature, capitalizeWords } from '../utils/helpers';
+import type { ForecastData, ForecastItem } from '../types/weather';
 import './HourlyForecast.css';
 
 interface HourlyForecastProps {
-  forecast: any;
+  forecast: ForecastData;
   tempUnit?: 'C' | 'F';
 }
 
 const HourlyForecast = ({ forecast, tempUnit = 'C' }: HourlyForecastProps) => {
   // Get hourly forecasts for next 24 hours (8 entries, 3-hour intervals)
-  const getHourlyForecasts = () => {
+  const getHourlyForecasts = (): ForecastItem[] => {
     return forecast.list.slice(0, 8);
   };
 
-  const hourlyData = getHourlyForecasts();
+  const hourlyData: ForecastItem[] = getHourlyForecasts();
 
   // Format hour display
   const formatHour = (timestamp: number) => {
@@ -49,7 +50,7 @@ const HourlyForecast = ({ forecast, tempUnit = 'C' }: HourlyForecastProps) => {
       <h3 className="hourly-title">Hourly Forecast</h3>
       <div className="hourly-scroll">
         <div className="hourly-list">
-          {hourlyData.map((hour: any, index: number) => {
+          {hourlyData.map((hour: ForecastItem, index: number) => {
             const iconUrl = WeatherService.getWeatherIconUrl(hour.weather[0].icon);
             
             return (
