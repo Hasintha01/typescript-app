@@ -57,6 +57,9 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         platforms: linux/amd64,linux/arm64
+        build-args: |
+          VITE_WEATHER_API_KEY=${{ secrets.VITE_WEATHER_API_KEY }}
+          VITE_BASE_PATH=/
 
     - name: Generate artifact attestation
       uses: actions/attest-build-provenance@v1
