@@ -26,6 +26,15 @@
   }
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .forecast-card {
+    padding: var(--space-lg);
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
 .forecast-title {
   font-size: var(--font-heading-lg);
   font-weight: var(--weight-display);
@@ -43,6 +52,14 @@
   gap: var(--space-md);
   flex: 1; /* Fill remaining space in forecast card */
   align-content: start;
+}
+
+/* Mobile: Ensure proper grid on smaller screens */
+@media (max-width: 768px) {
+  .forecast-list {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: var(--space-sm);
+  }
 }
 
 .forecast-item {

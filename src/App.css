@@ -230,7 +230,11 @@
   }
 
   .app-main {
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-md);
+  }
+  
+  .weather-content {
+    gap: var(--space-md);
   }
   
   .welcome-message {

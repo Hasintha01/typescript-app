@@ -23,6 +23,15 @@
   }
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hourly-forecast {
+    padding: var(--space-lg);
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
 .hourly-title {
   font-size: var(--font-heading-lg);
   font-weight: var(--weight-display);
@@ -85,6 +94,13 @@
   gap: var(--space-md);
   padding: var(--space-xs) 0 var(--space-md) 0;
   min-width: 100%;
+}
+
+/* Mobile: Smaller items for better fit */
+@media (max-width: 768px) {
+  .hourly-list {
+    gap: var(--space-sm);
+  }
 }
 
 .hourly-item {
