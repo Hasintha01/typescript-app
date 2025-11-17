@@ -59,7 +59,11 @@ const ForecastCard = ({ forecast, tempUnit = 'C' }: ForecastCardProps) => {
           const iconUrl = WeatherService.getWeatherIconUrl(day.weather[0].icon);
           
           return (
-            <div key={index} className="forecast-item">
+            <div 
+              key={index} 
+              className="forecast-item"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               <div className="forecast-day">{formatDay(day.dt)}</div>
               <img 
                 src={iconUrl} 

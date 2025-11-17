@@ -1,39 +1,60 @@
 /**
  * HourlyForecast Styles
- * Horizontal scrollable hourly forecast
+ * Horizontal scrollable hourly forecast with scroll-snap
  */
 
 .hourly-forecast {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
-              0 2px 8px rgba(0, 0, 0, 0.04);
+  background: var(--glass);
+  backdrop-filter: blur(var(--blur-strong));
+  -webkit-backdrop-filter: blur(var(--blur-strong));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
   max-width: 900px;
-  margin: 1.5rem auto 0;
-  animation: fadeIn 0.4s ease-out;
+  margin: var(--space-lg) auto 0;
+  animation: fadeInUp var(--motion-medium) var(--motion-easing);
 }
 
 .hourly-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin: 0 0 1.5rem 0;
+  font-size: var(--font-heading-lg);
+  font-weight: var(--weight-display);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-lg) 0;
   letter-spacing: -0.5px;
   text-align: center;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--divider);
 }
 
 .hourly-scroll {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  
+  /* Scroll snap for smooth scrolling */
+  scroll-snap-type: x mandatory;
+  scroll-padding: var(--space-md);
+  
+  /* Custom scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 122, 255, 0.3) transparent;
+  scrollbar-color: rgba(var(--primary-rgb), 0.3) transparent;
+  
+  /* Fade effect on edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
 }
 
 .hourly-scroll::-webkit-scrollbar {
@@ -41,23 +62,23 @@
 }
 
 .hourly-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 3px;
+  background: rgba(var(--primary-rgb), 0.05);
+  border-radius: var(--radius-sm);
 }
 
 .hourly-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 122, 255, 0.3);
-  border-radius: 3px;
+  background: rgba(var(--primary-rgb), 0.3);
+  border-radius: var(--radius-sm);
 }
 
 .hourly-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 122, 255, 0.5);
+  background: rgba(var(--primary-rgb), 0.5);
 }
 
 .hourly-list {
   display: flex;
-  gap: 1rem;
-  padding: 0.5rem 0 1rem;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0 var(--space-md);
   min-width: min-content;
 }
 
@@ -66,18 +87,27 @@
   flex-direction: column;
   align-items: center;
   min-width: 100px;
-  padding: 1rem 0.75rem;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  transition: all 0.2s ease;
+  padding: var(--space-md) var(--space-sm);
+  background: rgba(var(--primary-rgb), 0.04);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--divider);
+  transition: all var(--motion-short) var(--motion-easing);
   flex-shrink: 0;
+  
+  /* Scroll snap alignment */
+  scroll-snap-align: start;
+  
+  /* Staggered entrance animation */
+  animation: scaleIn var(--motion-medium) var(--motion-easing) backwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .hourly-item:hover {
-  background: rgba(0, 122, 255, 0.05);
-  border-color: rgba(0, 122, 255, 0.1);
-  transform: translateY(-2px);
+  background: rgba(var(--primary-rgb), 0.08);
+  border-color: rgba(var(--primary-rgb), 0.2);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-md);
 }
 
 .hourly-time {
@@ -163,5 +193,24 @@
 
   .hourly-temp {
     font-size: 1.125rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hourly-forecast {
+    animation: fadeIn var(--motion-short);
+  }
+  
+  .hourly-item {
+    animation: fadeIn var(--motion-short) backwards;
+  }
+  
+  .hourly-item:hover {
+    transform: none;
+  }
+  
+  .hourly-scroll {
+    scroll-snap-type: none;
   }
 }

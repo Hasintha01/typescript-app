@@ -53,7 +53,11 @@ const HourlyForecast = ({ forecast, tempUnit = 'C' }: HourlyForecastProps) => {
             const iconUrl = WeatherService.getWeatherIconUrl(hour.weather[0].icon);
             
             return (
-              <div key={index} className="hourly-item">
+              <div 
+                key={index} 
+                className="hourly-item"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
                 <div className="hourly-time">{formatHour(hour.dt)}</div>
                 <img 
                   src={iconUrl} 

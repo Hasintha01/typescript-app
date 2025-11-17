@@ -1,19 +1,22 @@
 /**
  * WeatherAlert Styles
- * Alert banner styling with severity levels
+ * iOS-style alert banner with severity levels
  */
 
 .weather-alert {
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.25rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  animation: slideIn 0.3s ease-out;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  animation: slideInDown var(--motion-medium) var(--motion-easing);
   border-left: 4px solid;
+  backdrop-filter: blur(var(--blur-soft));
+  -webkit-backdrop-filter: blur(var(--blur-soft));
+  box-shadow: var(--shadow-sm);
 }
 
-@keyframes slideIn {
+@keyframes slideInDown {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -27,47 +30,45 @@
 .alert-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-sm);
 }
 
 .alert-icon {
-  font-size: 1.5rem;
+  font-size: var(--font-heading-lg);
   line-height: 1;
+  animation: pulseScale 2s ease-in-out infinite;
 }
 
 .alert-message {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--font-body-md);
+  font-weight: var(--weight-heading);
   letter-spacing: -0.2px;
-  color: #1C1C1E;
+  color: var(--text-primary);
 }
 
 .alert-details {
-  margin-top: 0.5rem;
+  margin-top: var(--space-xs);
   padding-left: 2.25rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: var(--font-body-sm);
+  line-height: var(--line-height-relaxed);
   opacity: 0.85;
-  color: rgba(60, 60, 67, 0.6);
+  color: var(--text-secondary);
 }
 
-/* Severity levels */
+/* Severity levels with iOS-style colors */
 .alert-caution {
-  background: rgba(255, 204, 0, 0.08);
+  background: rgba(255, 204, 0, 0.1);
   border-left-color: #FFCC00;
-  color: #1C1C1E;
 }
 
 .alert-warning {
-  background: rgba(255, 149, 0, 0.08);
-  border-left-color: #FF9500;
-  color: #1C1C1E;
+  background: rgba(255, 149, 0, 0.1);
+  border-left-color: var(--warning);
 }
 
 .alert-severe {
-  background: rgba(255, 59, 48, 0.08);
-  border-left-color: #FF3B30;
-  color: #1C1C1E;
+  background: rgba(255, 59, 48, 0.1);
+  border-left-color: var(--danger);
 }
 
 @media (max-width: 768px) {

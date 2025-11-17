@@ -42,12 +42,18 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--divider);
   transition: all var(--motion-short) var(--motion-easing);
+  
+  /* Staggered entrance animation */
+  animation: fadeInUp var(--motion-medium) var(--motion-easing) backwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .forecast-item:hover {
   background: rgba(var(--primary-rgb), 0.08);
   border-color: rgba(var(--primary-rgb), 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
   box-shadow: var(--shadow-sm);
 }
 
@@ -133,5 +139,21 @@
 
   .forecast-temp {
     font-size: 1.25rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .forecast-card {
+    animation: fadeIn var(--motion-short);
+  }
+  
+  .forecast-item {
+    animation: fadeIn var(--motion-short) backwards;
+  }
+  
+  .forecast-item:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
   }
 }
