@@ -43,9 +43,10 @@
 
 /* Warning icon */
 .error-icon {
-  font-size: 3.5rem;
+  width: 64px;
+  height: 64px;
+  color: var(--danger);
   margin-bottom: var(--space-md);
-  filter: grayscale(20%);
   animation: bounceIn var(--motion-long) var(--motion-easing);
 }
 

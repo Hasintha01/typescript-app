@@ -14,7 +14,9 @@ describe('ErrorMessage', () => {
   it('displays error icon', () => {
     render(<ErrorMessage message="Test error" />);
     
-    expect(screen.getByText('⚠️')).toBeInTheDocument();
+    const errorIcon = document.querySelector('.error-icon');
+    expect(errorIcon).toBeInTheDocument();
+    expect(errorIcon?.tagName.toLowerCase()).toBe('svg');
   });
 
   it('renders retry button when onRetry is provided', () => {

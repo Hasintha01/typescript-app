@@ -116,12 +116,24 @@
   text-align: center;
   padding: var(--space-xxl) var(--space-xl);
   animation: fadeInUp var(--motion-medium) var(--motion-easing);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.welcome-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--primary);
+  opacity: 0.8;
+  animation: floatSubtle 3s ease-in-out infinite;
 }
 
 .welcome-message h2 {
   font-size: var(--font-display-xl);
   font-weight: var(--weight-display);
-  margin: 0 0 var(--space-md) 0;
+  margin: 0;
   color: var(--text-primary);
   letter-spacing: -0.5px;
 }
@@ -304,6 +316,11 @@
   
   .welcome-message {
     padding: var(--space-lg) var(--space-sm);
+  }
+
+  .welcome-icon {
+    width: 48px;
+    height: 48px;
   }
 
   .welcome-message h2 {
