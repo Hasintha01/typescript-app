@@ -110,7 +110,7 @@ function App() {
       <header className="app-header">
         <div className="app-header-top">
           <div className="app-title">
-            <img src="/weather_app_logo.png" alt="Weather App Logo" className="app-logo" />
+            <img src={`${import.meta.env.BASE_URL}weather_app_logo.png`} alt="Weather App Logo" className="app-logo" />
             <h1>Weather Dashboard</h1>
           </div>
           <ThemeToggle />
