@@ -1,0 +1,51 @@
+name: API Uptime Check
+
+on:
+  schedule:
+    # Every 15 minutes
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-openweather-api:
+    name: Ping OpenWeather API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify API key is configured
+        shell: bash
+        run: |
+          if [ -z "${{ secrets.VITE_WEATHER_API_KEY }}" ]; then
+            echo "❌ Missing VITE_WEATHER_API_KEY secret" >&2
+            exit 1
+          fi
+
+      - name: Ping OpenWeather current weather endpoint
+        id: ping
+        shell: bash
+        env:
+          API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
+        run: |
+          CITY="London"
+          URL="https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric"
+          echo "Requesting: $URL"
+          # Get status code and a brief excerpt for debugging
+          HTTP_STATUS=$(curl -s -o response.json -w "%{http_code}" "$URL")
+          echo "status=$HTTP_STATUS" >> "$GITHUB_OUTPUT"
+          echo "HTTP status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -lt 200 ] || [ "$HTTP_STATUS" -ge 400 ]; then
+            echo "Response excerpt:" && head -c 350 response.json || true
+            exit 1
+          fi
+
+      - name: Job summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## OpenWeather API Uptime"
+            echo "- Status: ${{ steps.ping.outputs.status }}"
+            echo "- Time (UTC): $(date -u '+%Y-%m-%d %H:%M:%S')"
+          } >> "$GITHUB_STEP_SUMMARY"

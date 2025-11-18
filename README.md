@@ -1,5 +1,10 @@
 # Weather Dashboard
 
+![CI/CD](https://github.com/Hasintha01/typescript-app/actions/workflows/ci-cd.yml/badge.svg)
+![Docker](https://github.com/Hasintha01/typescript-app/actions/workflows/docker.yml/badge.svg)
+![Pages Deploy](https://github.com/Hasintha01/typescript-app/actions/workflows/deploy-github-pages.yml/badge.svg)
+![API Uptime](https://github.com/Hasintha01/typescript-app/actions/workflows/api-uptime.yml/badge.svg)
+
 A modern, responsive weather dashboard built with React, TypeScript, and Vite. The application provides comprehensive real-time weather information including current conditions, hourly forecasts, and 5-day predictions powered by the OpenWeatherMap API.
 
 ## Features
@@ -48,6 +53,10 @@ A modern, responsive weather dashboard built with React, TypeScript, and Vite. T
 - **Docker**: Multi-stage builds for optimized production images
 - **Docker Compose**: Easy container orchestration for development and production
 - **Nginx**: Production-ready web server for serving static files
+
+### Monitoring
+
+- **API Uptime Check**: Scheduled GitHub Action that pings the OpenWeather API every 15 minutes and fails on non-2xx responses. Configure `VITE_WEATHER_API_KEY` as a repository secret for it to work.
 
 ## Prerequisites
 
@@ -124,6 +133,16 @@ docker run -d -p 8080:80 weather-dashboard
 ```
 
 Access the application at `http://localhost:8080`
+
+## Screenshots
+
+Add a couple of screenshots or a short GIF here for your portfolio/LinkedIn post:
+
+- Home view (desktop)
+- Mobile view with dark mode
+- Hourly and 5-day forecasts
+
+Tip: Use your browser’s device toolbar and `Ctrl+Shift+P` → “Capture full-size screenshot” in Chrome/Edge DevTools.
 
 ## Project Structure
 
