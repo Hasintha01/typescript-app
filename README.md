@@ -136,13 +136,29 @@ Access the application at `http://localhost:8080`
 
 ## Screenshots
 
-Add a couple of screenshots or a short GIF here for your portfolio/LinkedIn post:
+### Desktop View (Light Mode)
 
-- Home view (desktop)
-- Mobile view with dark mode
-- Hourly and 5-day forecasts
+![Desktop Light Mode](<screenshots/Full-View(Light).png>)
 
-Tip: Use your browser’s device toolbar and `Ctrl+Shift+P` → “Capture full-size screenshot” in Chrome/Edge DevTools.
+### Desktop View (Dark Mode)
+
+![Desktop Dark Mode](<screenshots/Full-View(Dark).png>)
+
+### Mobile View
+
+![Mobile View](screenshots/Mobile-View.jpg)
+
+### Application View
+
+![Application View](screenshots/View.jfif)
+
+### CI/CD Pipelines
+
+![CI/CD Pipelines](screenshots/Pipelines.jfif)
+
+### Testing Coverage
+
+![Testing Coverage](screenshots/Testing.jfif)
 
 ## Project Structure
 
